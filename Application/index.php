@@ -1,5 +1,4 @@
 <?php
-    echo "test2";
     require_once 'vendor/autoload.php';
     $app_insights_instrumentation = getenv('APPINSIGHTS_INSTRUMENTATIONKEY');
     $telemetryClient = new \ApplicationInsights\Telemetry_Client();
@@ -32,7 +31,7 @@
                 <div class="success-text">Success!</div>
                 <div class="description line-1">
 				<?php
-				echo "Azure DevOps Project has been successfully setup";
+				echo "The test excercise is done";
 				?>
 				</div>
                 <div class="description line-2">
