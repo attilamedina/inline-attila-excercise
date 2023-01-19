@@ -38,7 +38,7 @@
 				<?php
 				$appType = "PHP";
 				echo "Your $appType app is up and running on Azure";
-				echo "Test"
+				echo "Testing done"
 				?>
 				</div>
                 <div class="next-steps-container">
