@@ -1,4 +1,5 @@
 <?php
+    echo "test"
     require_once 'vendor/autoload.php';
     $app_insights_instrumentation = getenv('APPINSIGHTS_INSTRUMENTATIONKEY');
     $telemetryClient = new \ApplicationInsights\Telemetry_Client();
