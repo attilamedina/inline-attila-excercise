@@ -1,11 +1,14 @@
 trigger:
-  branches:
-    include:
-    - refs/heads/master
-  paths:
-    include:
-    - /
-  batch: True
+- none
+
+resources:
+  pipelines:
+  - pipeline: deploy_storageaccount_ARM  # Name of the pipeline resource
+    source: storage_arm_pipeline # Name of the triggering pipeline
+    trigger: 
+      branches:
+      - master
+
 name: $(date:yyyyMMdd)$(rev:.r)
 jobs:
 - job: Phase_1
