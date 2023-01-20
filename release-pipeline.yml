@@ -3,8 +3,8 @@ trigger:
 
 resources:
   pipelines:
-  - pipeline: deploy_storageaccount_ARM  # Name of the pipeline resource
-    source: storage_arm_pipeline # Name of the triggering pipeline
+  - pipeline: deploy_webapp_inlinemarket_test  # Name of the pipeline resource
+    source: php_cont_deploy.yml # Name of the triggering pipeline
     trigger: 
       branches:
       - master
