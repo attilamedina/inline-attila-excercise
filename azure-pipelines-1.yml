@@ -1,6 +1,7 @@
 # This pipeline will create a storage account in amedina-storage-rg resource group.
 # Template and parameter files are stored in Github
-name test
+name: test
+appendCommitMessageToRunName: false
 
 trigger:
 - master
