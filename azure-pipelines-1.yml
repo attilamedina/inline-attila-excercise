@@ -6,6 +6,5 @@
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'inlinemarket-excercise-rg'
     location: 'West Europe'
-    templateLocation: 'Linked artifact'
     csmFile: '$(System.DefaultWorkingDirectory)/**/storage-template.json'
     deploymentMode: 'Incremental'
