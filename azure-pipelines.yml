@@ -9,7 +9,6 @@ resources:
       branches:
       - master
 
-name: $(date:yyyyMMdd)$(rev:.r)
 jobs:
 - job: Phase_1
   displayName: Agent job 1
