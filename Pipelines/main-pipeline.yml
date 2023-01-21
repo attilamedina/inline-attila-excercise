@@ -1,4 +1,4 @@
-# File: azure-pipelines.yaml
+# File: main-pipeline.yml
 # This is the top-level YAML file that will orchestrate the pipeline
 
 trigger:
@@ -8,11 +8,4 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-- template: pipeline-templates/build.yaml
-- template: pipeline-templates/release.yaml
-  parameters:
-      AdminPassword: $(AdminPassword)
-      AdminTestPassword: $(AdminTestPassword)
-      HostingPlan: $(HostingPlan)
-      ServerName: $(ServerName)
-      WebsiteName: $(WebsiteName) 
+- template: pipelines/build-pipeline.yaml
