@@ -3,6 +3,7 @@ stages:
 
   jobs:
   - job: Deploy
+    displayName: Release staging
     steps:
     - task: AzureResourceGroupDeployment@2
       displayName: 'Azure Deployment:Create Azure App Service'
