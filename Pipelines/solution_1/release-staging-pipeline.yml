@@ -21,7 +21,7 @@ stages:
         appType: applinux
         deployToSlotOrASE: true
         WebAppName: 'inlinemarket-excercise'
-        DeployToSlotFlag: true
+        #DeployToSlotFlag: true
         ResourceGroupName: 'inlinemarket-excercise-rg'
         SlotName: 'staging'
         DockerNamespace: inlinemarketexcerciseacr.azurecr.io
