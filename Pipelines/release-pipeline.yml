@@ -29,3 +29,7 @@ stages:
         TakeAppOfflineFlag: true
         UseWebDeploy: true
         RenameFilesFlag: true
+    - task: ManualValidation@0
+      inputs:
+        notifyUsers: 'attila.medina@gmail.com'
+        instructions: 'Please validte the build on https://inlinemarket-excercise-staging.azurewebsites.net/'
