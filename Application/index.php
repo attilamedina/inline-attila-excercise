@@ -12,7 +12,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>PHP Application</title>
+	<title>PHP Application for testing</title>
 	<link href="css/site.css" rel="stylesheet">
 </head>
 
@@ -31,7 +31,7 @@
                 <div class="success-text">Success!</div>
                 <div class="description line-1">
 				<?php
-				echo "Attila Medina pipeline test excercise";
+				echo "Attila Medina pipeline test excercise with orchestrator";
 				?>
 				</div>
                 <div class="description line-2">
