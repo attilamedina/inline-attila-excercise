@@ -8,4 +8,4 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-- template: build-pipeline.yaml
+- template: build-pipeline.yml
