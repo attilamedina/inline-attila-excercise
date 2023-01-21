@@ -4,7 +4,7 @@ stages:
 
   jobs:
   - job: Phase_1
-    displayName: Agent job 1
+    displayName: Build job
     timeoutInMinutes: 0
     pool:
       vmImage: ubuntu-18.04
