@@ -6,7 +6,7 @@
             "value": "inlinemarket-excercise"
         },
         "serverfarms_inlinemarket_excercise_plan_externalid": {
-            "value": null
+            "value": "/subscriptions/415f196b-dbde-48a5-8a04-3897ea12069e/resourceGroups/inlinemarket-excercise-rg/providers/Microsoft.Web/serverfarms/inlinemarket-excercise-plan"
         }
     }
 }
