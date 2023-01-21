@@ -1,5 +1,5 @@
 stages:
-- stage: Deploy
+- stage: Deploy_prod
 
   jobs:
   - job: Deploy_prod
