@@ -31,7 +31,7 @@
                 <div class="success-text">Welcome!</div>
                 <div class="description line-1">
 				<?php
-				echo "Attila Medina pipeline test excercise with orchestrator. Staging first before production.";
+				echo "Attila Medina pipeline test excercise. Please validate the stage to deploy to production.";
 				?>
 				</div>
                 <div class="description line-2">
