@@ -1,5 +1,7 @@
 
-name: $(date:yyyyMMdd)$(rev:.r)
+stages:
+- stage: Build
+
 jobs:
 - job: Phase_1
   displayName: Agent job 1
