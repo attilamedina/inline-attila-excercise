@@ -11,5 +11,7 @@ pool:
 
 stages:
 - template: build-pipeline.yml
-- template: release-pipeline.yml
+- template: release-staging-pipeline.yml
+- template: release-prod-pipeline.yml
+
 
