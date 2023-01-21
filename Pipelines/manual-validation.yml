@@ -1,19 +1,16 @@
 stages:
 - stage: Validate
 
-pool: 
-   vmImage: ubuntu-latest
-
-   jobs:
-   - job: waitForValidation
-   displayName: Wait for external validation  
-   pool: server    
-   timeoutInMinutes: 4320 # job times out in 3 days
-   steps:   
+  jobs:
+  - job: waitForValidation
+    displayName: Wait for external validation  
+    pool: server    
+    timeoutInMinutes: 4320 # job times out in 3 days
+    steps:   
     - task: ManualValidation@0
       timeoutInMinutes: 1440 # task times out in 1 day
       inputs:
           notifyUsers: |
-             attila.media@gmail.com
+                attila.media@gmail.com
           instructions: 'Please validate the build configuration and resume'
           onTimeout: 'resume'
