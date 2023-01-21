@@ -1,28 +1,30 @@
-trigger:
-- none
+stages:
+- stage: Deploy
 
-steps:
-- task: AzureResourceGroupDeployment@2
-  displayName: 'Azure Deployment:Create Azure App Service'
-  inputs:
-    azureSubscription: 'inlinemarket-excercise - Azure'
-    resourceGroupName: 'inlinemarket-excercise-rg'
-    location: 'West Europe'
-    csmFile: '$(System.DefaultWorkingDirectory)/**/container-webapp-template.json'
-    overrideParameters: '-webAppName inlinemarket-excercise -hostingPlanName inlinemarket-excercise-plan -appInsightsLocation "West Europe" -sku "S1 Standard" -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard" -imageName inlinemarketexcercise:$(Build.BuildId)'
+  jobs:
+  - job: Deploy
+    steps:
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Azure Deployment:Create Azure App Service'
+      inputs:
+        azureSubscription: 'inlinemarket-excercise - Azure'
+        resourceGroupName: 'inlinemarket-excercise-rg'
+        location: 'West Europe'
+        csmFile: '$(System.DefaultWorkingDirectory)/**/container-webapp-template.json'
+        overrideParameters: '-webAppName inlinemarket-excercise -hostingPlanName inlinemarket-excercise-plan -appInsightsLocation "West Europe" -sku "S1 Standard" -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard" -imageName inlinemarketexcercise:$(Build.BuildId)'
 
-- task: AzureRmWebAppDeployment@3
-  displayName: 'Deploy Azure App Service'
-  inputs:
-    azureSubscription: 'inlinemarket-excercise - Azure'
-    appType: applinux
-    WebAppName: 'inlinemarket-excercise'
-    DeployToSlotFlag: true
-    ResourceGroupName: 'inlinemarket-excercise-rg'
-    SlotName: 'inlinemarket-excercise-stagin'
-    DockerNamespace: inlinemarketexcerciseacr.azurecr.io
-    DockerRepository: inlinemarketexcercise
-    DockerImageTag: '$(Build.BuildId)'
-    TakeAppOfflineFlag: true
-    UseWebDeploy: true
-    RenameFilesFlag: true
+    - task: AzureRmWebAppDeployment@3
+      displayName: 'Deploy Azure App Service'
+      inputs:
+        azureSubscription: 'inlinemarket-excercise - Azure'
+        appType: applinux
+        WebAppName: 'inlinemarket-excercise'
+        DeployToSlotFlag: true
+        ResourceGroupName: 'inlinemarket-excercise-rg'
+        SlotName: 'inlinemarket-excercise-stagin'
+        DockerNamespace: inlinemarketexcerciseacr.azurecr.io
+        DockerRepository: inlinemarketexcercise
+        DockerImageTag: '$(Build.BuildId)'
+        TakeAppOfflineFlag: true
+        UseWebDeploy: true
+        RenameFilesFlag: true
