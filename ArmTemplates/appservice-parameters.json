@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_inlinemarket_excercise_name": {
-            "value": null
+            "value": "inlinemarket-excercise"
         },
         "serverfarms_inlinemarket_excercise_plan_externalid": {
             "value": null
