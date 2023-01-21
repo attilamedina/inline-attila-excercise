@@ -1,5 +1,5 @@
 stages:
-- stage: Deploy
+- stage: Deploy prod
 
   jobs:
   - job: Deploy
@@ -20,12 +20,10 @@ stages:
         azureSubscription: 'inlinemarket-excercise - Azure'
         appType: applinux
         WebAppName: 'inlinemarket-excercise'
-        DeployToSlotFlag: true
-        ResourceGroupName: 'inlinemarket-excercise-rg'
-        SlotName: 'staging'
         DockerNamespace: inlinemarketexcerciseacr.azurecr.io
         DockerRepository: inlinemarketexcercise
         DockerImageTag: '$(Build.BuildId)'
         TakeAppOfflineFlag: true
         UseWebDeploy: true
         RenameFilesFlag: true
+        
