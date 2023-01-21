@@ -19,6 +19,7 @@ stages:
       inputs:
         azureSubscription: 'inlinemarket-excercise - Azure'
         appType: applinux
+        deployToSlotOrASE: true
         WebAppName: 'inlinemarket-excercise'
         DeployToSlotFlag: true
         ResourceGroupName: 'inlinemarket-excercise-rg'
