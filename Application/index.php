@@ -28,7 +28,7 @@
             </a>
         </div>
             <div class="content-body">
-                <div class="success-text">Success!</div>
+                <div class="success-text">Welcome!</div>
                 <div class="description line-1">
 				<?php
 				echo "Attila Medina pipeline test excercise with orchestrator. Staging first before production.";
@@ -37,8 +37,7 @@
                 <div class="description line-2">
 				<?php
 				$appType = "PHP";
-				echo "Your $appType app is up and running on Azure";
-				echo "Test"
+				echo "This $appType app is up and running on Azure";
 				?>
 				</div>
                 <div class="next-steps-container">
