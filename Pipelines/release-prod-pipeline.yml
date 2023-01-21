@@ -1,9 +1,9 @@
 stages:
-- stage: Deploy prod
+- stage: Deploy
 
   jobs:
-  - job: Deploy
-    displayName: Release staging
+  - job: Deploy_prod
+    displayName: Release prod
     steps:
     - task: AzureResourceGroupDeployment@2
       displayName: 'Azure Deployment:Create Azure App Service'
