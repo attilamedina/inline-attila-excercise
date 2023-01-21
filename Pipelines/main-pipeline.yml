@@ -9,3 +9,5 @@ pool:
 
 stages:
 - template: build-pipeline.yml
+- template: release-pipeline.yml
+
