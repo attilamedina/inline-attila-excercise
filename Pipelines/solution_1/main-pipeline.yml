@@ -4,7 +4,8 @@
 trigger:
   branches:
     include:
-    - refs/heads/master
+#    - refs/heads/master
+    - master/Application/*
 
 pool:
   vmImage: 'ubuntu-latest'
