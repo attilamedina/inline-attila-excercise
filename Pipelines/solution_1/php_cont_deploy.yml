@@ -1,14 +1,12 @@
 trigger:
-- none
-
-resources:
-  pipelines:
-  - pipeline: deploy_webapp_inlinemarket_test  # Name of the pipeline resource
-    source: php_cont_deploy # Name of the triggering pipeline
-    trigger: 
-      branches:
-      - master
-
+  branches:
+    include:
+    - refs/heads/master
+  paths:
+    include:
+    - /
+  batch: True
+name: $(date:yyyyMMdd)$(rev:.r)
 jobs:
 - job: Phase_1
   displayName: Agent job 1
@@ -48,3 +46,4 @@ jobs:
     inputs:
       PathtoPublish: $(build.artifactstagingdirectory)
       TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+...
