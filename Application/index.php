@@ -37,7 +37,7 @@
                 <div class="description line-2">
 				<?php
 				$appType = "PHP";
-				echo "This $appType app is up and running on Azure in container.";
+				echo "This $appType app is up and running on Azure in containerized.";
 				?>
 				</div>
                 <div class="next-steps-container">
