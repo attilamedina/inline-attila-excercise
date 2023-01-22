@@ -31,7 +31,7 @@
                 <div class="success-text">Welcome!</div>
                 <div class="description line-1">
 				<?php
-				echo "Attila Medina pipeline test assessment. Please validate the staging env before deploy to production.";
+				echo "Attila Medina pipeline test assessment. Please validate the staging.";
 				?>
 				</div>
                 <div class="description line-2">
