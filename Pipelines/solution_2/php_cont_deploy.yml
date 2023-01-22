@@ -1,11 +1,10 @@
 trigger:
   branches:
     include:
-#    - refs/heads/master
-    - master/Application/*
+    - master
   paths:
     include:
-    - /
+    - Application
   batch: True
 name: $(date:yyyyMMdd)$(rev:.r)
 jobs:
