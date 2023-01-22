@@ -4,7 +4,7 @@
 trigger:
   branches:
     include:
-    - refs/heads/master/Application/*
+    - refs/heads/master
 #    - master/Application/*
 
 pool:
