@@ -3,7 +3,7 @@
 trigger:
   branches:
     include:
-    - master
+    - refs/heads/master
   paths:
     include:
     - Application/index.php
