@@ -1,12 +1,6 @@
 # File: main-pipeline.yml
 # This is the top-level YAML file that will orchestrate the pipeline
-trigger:
-  branches:
-    include:
-    - refs/heads/master
-  paths:
-    include:
-    - Application/index.php
+
 
 #    - master/Application/*
 
