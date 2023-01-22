@@ -3,11 +3,6 @@
 pool:
   vmImage: 'ubuntu-latest'
 
-trigger:
-  branches:
-    include:
-    - refs/heads/master
-
 stages:
 - template: build-pipeline.yml
 - template: release-staging-pipeline.yml
