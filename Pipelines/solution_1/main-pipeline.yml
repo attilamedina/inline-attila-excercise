@@ -4,9 +4,6 @@ trigger:
   branches:
     include:
     - refs/heads/master
-  paths:
-    include:
-    - Application/index.php
 
 pool:
   vmImage: 'ubuntu-latest'
