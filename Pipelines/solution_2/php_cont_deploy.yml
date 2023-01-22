@@ -1,8 +1,8 @@
 trigger:
   branches:
     include:
-#    - refs/heads/master
-    - master/Application/*
+    - refs/heads/master
+#    - master/Application/*
   paths:
     include:
     - /
