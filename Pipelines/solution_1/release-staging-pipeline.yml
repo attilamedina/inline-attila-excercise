@@ -1,9 +1,9 @@
 resources:
   pipelines:
-  - pipeline: release-staging # Name of the pipeline resource.
-    source: build-pipeline # The name of the pipeline referenced by this pipeline resource.
-    project: inlinemarket-excercise # Required only if the source pipeline is in another project
-    trigger: true # Run app-ci pipeline when any run of security-lib-ci completes
+  - pipeline: release-staging 
+    source: build-pipeline 
+    project: inlinemarket-excercise 
+    trigger: true 
 
 
 stages:
