@@ -14,25 +14,14 @@ stages:
         location: 'West Europe'
         csmFile: '$(System.DefaultWorkingDirectory)/**/container-webapp-template.json'
         overrideParameters: '-webAppName inlinemarket-excercise -hostingPlanName inlinemarket-excercise-plan -appInsightsLocation "West Europe" -sku "S1 Standard" -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard" -imageName inlinemarketexcercise:$(Build.BuildId)'
-    - task: AzureResourceManagerTemplateDeployment@3
-      inputs:
-        deploymentScope: 'Resource Group'
-        azureResourceManagerConnection: 'Free Trial (415f196b-dbde-48a5-8a04-3897ea12069e)'
-        subscriptionId: '415f196b-dbde-48a5-8a04-3897ea12069e'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'inlinemarket-excercise-rg'
-        location: 'West Europe'
-        templateLocation: 'Linked artifact'
-        csmFile: '$(System.DefaultWorkingDirectory)/**/slot-template.json'
-        csmParametersFile: '$(System.DefaultWorkingDirectory)/**/slot-parameters.json'
-        deploymentMode: 'Incremental'
+
     - task: AzureRmWebAppDeployment@4
       displayName: 'Deploy Azure App Service'
       inputs:
         azureSubscription: 'inlinemarket-excercise - Azure'
         appType: applinux
         WebAppName: 'inlinemarket-excercise'
-        DeployToSlotFlag: true
+        deployToSlotOrASE: true
         ResourceGroupName: 'inlinemarket-excercise-rg'
         SlotName: 'staging'
         DockerNamespace: inlinemarketexcerciseacr.azurecr.io
