@@ -28,7 +28,7 @@ stages:
         csmFile: '$(System.DefaultWorkingDirectory)/**/slot-template.json'
         csmParametersFile: '$(System.DefaultWorkingDirectory)/**/slot-parameters.json'
         deploymentMode: 'Incremental'
-    - task: AzureRmWebAppDeployment@3
+    - task: AzureRmWebAppDeployment@4
       displayName: 'Deploy Azure App Service'
       inputs:
         azureSubscription: 'inlinemarket-excercise - Azure'
