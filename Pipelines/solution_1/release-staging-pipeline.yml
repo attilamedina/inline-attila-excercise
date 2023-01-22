@@ -15,7 +15,7 @@ stages:
         csmFile: '$(System.DefaultWorkingDirectory)/**/container-webapp-template.json'
         overrideParameters: '-webAppName inlinemarket-excercise -hostingPlanName inlinemarket-excercise-plan -appInsightsLocation "West Europe" -sku "S1 Standard" -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard" -imageName inlinemarketexcercise:$(Build.BuildId)'
 
-    - task: AzureRmWebAppDeployment@4
+    - task: AzureRmWebAppDeployment@3
       displayName: 'Deploy Azure App Service'
       inputs:
         azureSubscription: 'inlinemarket-excercise - Azure'
