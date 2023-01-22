@@ -3,10 +3,10 @@
 trigger:
   branches:
     include:
-    - refs/heads/master/Application
+    - master
   paths:
     include:
-    - 'Application/*'
+    - Application
 
 #    - master/Application/*
 
