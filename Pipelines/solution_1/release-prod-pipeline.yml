@@ -1,5 +1,9 @@
-trigger:
-- none
+resources:
+  pipelines:
+  - pipeline: release-prod 
+    source: manual-validation 
+    project: inlinemarket-excercise 
+    trigger: true 
 
 stages:
 - stage: Deploy_prod
