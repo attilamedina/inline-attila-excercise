@@ -5,6 +5,8 @@ trigger:
   paths:
     include:
     - Application
+  batch: True
+name: $(date:yyyyMMdd)$(rev:.r)
 
 stages:
 - stage: Build
