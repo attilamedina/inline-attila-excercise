@@ -6,29 +6,24 @@ resources:
     trigger: true 
 
 
-jobs:
-- job: Deploy_prod
-  displayName: Release prod
-  steps:
-  - task: AzureResourceGroupDeployment@2
-    displayName: 'Azure Deployment:Create Azure App Service'
-    inputs:
-      azureSubscription: 'inlinemarket-excercise - Azure'
-      resourceGroupName: 'inlinemarket-excercise-rg'
-      location: 'West Europe'
-      csmFile: '$(System.DefaultWorkingDirectory)/**/container-webapp-template.json'
-      overrideParameters: '-webAppName inlinemarket-excercise -hostingPlanName inlinemarket-excercise-plan -appInsightsLocation "West Europe" -sku "S1 Standard" -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard" -imageName inlinemarketexcercise:$(Build.BuildId)'
+steps:
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy Azure App Service'
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(415f196b-dbde-48a5-8a04-3897ea12069e)'
+    appType: 'webAppLinux'
+    WebAppName: 'inlinemarket-assesment'
+    ResourceGroupName: 'inlinemarket-assesment-rg'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)'
+    RuntimeStack: 'php|7.0'
+    ScriptType: 'Inline Script'
+    InlineScript: |
+      if [ -f  composer.json ] 
+       then 
+      	 echo "Found composer.json" 
+      	 composer install 
+       else 
+      	 echo "Composer.json not found. Skipping composer install" 
+       fi
 
-  - task: AzureRmWebAppDeployment@3
-    displayName: 'Deploy Azure App Service'
-    inputs:
-      azureSubscription: 'inlinemarket-excercise - Azure'
-      appType: applinux
-      WebAppName: 'inlinemarket-excercise'
-      DockerNamespace: inlinemarketexcerciseacr.azurecr.io
-      DockerRepository: inlinemarketexcercise
-      DockerImageTag: '$(Build.BuildId)'
-      TakeAppOfflineFlag: true
-      UseWebDeploy: true
-      RenameFilesFlag: true
-        
