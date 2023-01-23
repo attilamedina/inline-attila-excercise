@@ -34,7 +34,7 @@ jobs:
       azureSubscription: 'inlinemarket-excercise - Azure'
       appType: applinux
       WebAppName: 'inlinemarket-excercise'
-      deployToSlotOrASE: true
+      DeployToSlotFlag: true
       ResourceGroupName: 'inlinemarket-excercise-rg'
       SlotName: 'staging'
       DockerNamespace: inlinemarketexcerciseacr.azurecr.io
