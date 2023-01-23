@@ -17,6 +17,7 @@ steps:
     rootFolder: '$(System.DefaultWorkingDirectory)/Application'
     includeRootFolder: false
     archiveType: zip
+
 - task: CopyFiles@2
   displayName: 'Copy ARM templates'
   inputs:
@@ -26,4 +27,3 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
 
-...
