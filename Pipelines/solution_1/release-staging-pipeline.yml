@@ -5,31 +5,50 @@ resources:
     project: inlinemarket-excercise 
     trigger: true 
 
-jobs:
-- job: Deploy
-  displayName: Release staging
-  steps:
-  - task: AzureResourceGroupDeployment@2
-    displayName: 'Azure Deployment:Create Azure App Service'
-    inputs:
-      azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-      action: 'Create Or Update Resource Group'
-      resourceGroupName: 'inlinemarket-excercise-rg'
-      location: 'West Europe'
-      templateLocation: 'Linked artifact'
-      csmFile: '$(System.DefaultWorkingDirectory)/**/windows-webapp-template.json'
-      overrideParameters: '-webAppName inlinemarket-assesment -hostingPlanName inlinemarket-assesment  -appInsightsLocation "West Europe" -sku "S1 Standard"'
-      deploymentMode: 'Incremental'
+steps:
+- task: AzureResourceGroupDeployment@2
+  displayName: 'Azure Deployment:Create Azure App Service'
+  inputs:
+    azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'inlinemarket-excercise-rg'
+    location: 'West Europe'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.DefaultWorkingDirectory)/**/windows-webapp-template.json'
+    overrideParameters: '-webAppName inlinemarket-assesment -hostingPlanName inlinemarket-assesment -appInsightsLocation "West Europe" -sku "S1 Standard"'
+    deploymentMode: 'Incremental'
 
+- task: AzureRmWebAppDeployment@3
+  displayName: 'Deploy Azure App Service'
+  inputs:
+    azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+    appType: 'app'
+    WebAppName: 'inlinemarket-assesment'
+    Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
+    ScriptType: 'Inline Script'
+    InlineScript: |
+      if exist "composer.json" (
+          echo found composer.json
+      ) else (
+          echo composer.json not found. Skipping composer install
+          EXIT /b 0
+      )
+      echo Search for composer extension
+      where composer
+      if %ERRORLEVEL% NEQ 0 (
+         echo Cannot find composer extension. Ensure that it exists before deployment >&2
+        EXIT /b 1 
+      )
+      echo found composer
+      call composer install -vvv
+      if %ERRORLEVEL% NEQ 0 (
+          echo composer install failed. >&2
+          EXIT /b 1 
+      )
+      echo Done composer install
+    TakeAppOfflineFlag: true
+    UseWebDeploy: true
+    RenameFilesFlag: true
 
-  - task: AzureRmWebAppDeployment@4
-    displayName: 'Deploy Azure App Service'
-    inputs:
-      ConnectionType: 'AzureRM'
-      azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-      appType: 'webApp'
-      WebAppName: 'inlinemarket-assesment'
-      packageForLinux: '$(Build.ArtifactStagingDirectory)'
-      ScriptType: 'Inline Script'
       
 
