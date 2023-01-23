@@ -18,13 +18,4 @@ This is done by "classic" way with Azure DevOps and no CD trigger is set to avoi
 -ARM: I made a separate storage account deployment pipeline, the yaml for it is under solution_2 folder. The name is storage_arm_pipeline.yml and
 the name of the pipeline: deploy_storageaccount_ARM 
 
-The URLs:
 
-Containerized app:
-https://inlinemarket-excercise.azurewebsites.net
-
-Staging:
-https://inlinemarket-assesment-test.azurewebsites.net
-
-Prod:
-https://inlinemarket-assesment.azurewebsites.net
