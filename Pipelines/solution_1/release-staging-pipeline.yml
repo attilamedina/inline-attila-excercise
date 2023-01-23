@@ -19,7 +19,7 @@ steps:
   displayName: 'Deploy Azure App Service'
   inputs:
     azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-    WebAppName: 'inlinemarket-excercise-rg'
+    WebAppName: 'inlinemarket-assesment'
     Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
     ScriptType: 'Inline Script'
     InlineScript: |
