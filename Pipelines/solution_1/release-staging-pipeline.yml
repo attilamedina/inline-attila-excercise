@@ -18,7 +18,7 @@ jobs:
       location: 'West Europe'
       templateLocation: 'Linked artifact'
       csmFile: '$(System.DefaultWorkingDirectory)/**/linux-webapp-template.json'
-      overrideParameters: '-webAppName inlinemarket-assesment -hostingPlanName inlinemarket-assesment  -appInsightsLocation "West Europe" -sku "S1 Standard"'
+      overrideParameters: '-webAppName inlinemarket-assessment -hostingPlanName inlinemarket-assesment  -appInsightsLocation "West Europe" -sku "S1 Standard"'
       deploymentMode: 'Incremental'
 
   - task: AzureResourceGroupDeployment@2
@@ -38,10 +38,10 @@ jobs:
       ConnectionType: 'AzureRM'
       azureSubscription: 'inlinemarket-excercise - Azure'
       appType: 'webAppLinux'
-      WebAppName: 'inlinemarket-assesment'
+      WebAppName: 'inlinemarket-assessment'
       deployToSlotOrASE: true
       resourceGroupName: 'inlinemarket-excercise-rg'
-      SlotName: 'staging'
+      SlotName: 'test'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
       RuntimeStack: 'php|7.0'
       ScriptType: 'Inline Script'
