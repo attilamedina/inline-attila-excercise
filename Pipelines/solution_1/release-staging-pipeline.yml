@@ -17,7 +17,7 @@ jobs:
       location: 'West Europe'
       csmFile: '$(System.DefaultWorkingDirectory)/**/container-webapp-template.json'
       overrideParameters: '-webAppName inlinemarket-excercise -hostingPlanName inlinemarket-excercise-plan -appInsightsLocation "West Europe" -sku "S1 Standard" -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard" -imageName inlinemarketexcercise:$(Build.BuildId)'
-#
+# Deploy staging slot
   - task: AzureResourceGroupDeployment@2
     displayName: 'Azure Deployment:Create Test slot'
     inputs:
