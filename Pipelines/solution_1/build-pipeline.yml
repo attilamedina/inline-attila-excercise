@@ -16,10 +16,7 @@ steps:
   inputs:
     rootFolder: '$(System.DefaultWorkingDirectory)/Application'
     includeRootFolder: false
-    archiveType: 'default'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-
+    archiveType: zip
 - task: CopyFiles@2
   displayName: 'Copy ARM templates'
   inputs:
