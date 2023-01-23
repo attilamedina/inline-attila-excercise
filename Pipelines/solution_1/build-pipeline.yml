@@ -23,7 +23,7 @@ jobs:
       resourceGroupName: inlinemarket-excercise-rg
       location: West Europe
       csmFile: $(System.DefaultWorkingDirectory)/**/containerRegistry-template.json
-      overrideParameters: -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard"
+      overrideParameters: -registryName "inlinemarketexcerciseacr" -registryLocation "West Europe" -registrySku "Standard"
   - task: Docker@1
     displayName: Build an image
     inputs:
