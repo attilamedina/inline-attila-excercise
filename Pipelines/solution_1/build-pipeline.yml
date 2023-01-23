@@ -8,27 +8,23 @@ trigger:
   batch: True
 name: $(date:yyyyMMdd)$(rev:.r)
 
-jobs:
-- job: Phase_1
-  displayName: Build job
-  timeoutInMinutes: 0
-  pool:
-    vmImage: ubuntu-18.04
-  steps:
-  - checkout: self
-  - task: ArchiveFiles@1
-    displayName: 'Archive files'
-    inputs:
-      rootFolder: '$(System.DefaultWorkingDirectory)/Application'
-      includeRootFolder: false
-      archiveType: zip
+pool:
+  name: Azure Pipelines
+steps:
+- task: ArchiveFiles@1
+  displayName: 'Archive files'
+  inputs:
+    rootFolder: '$(System.DefaultWorkingDirectory)/Application'
+    includeRootFolder: false
+    archiveType: zip
 
-  - task: CopyFiles@2
-    displayName: 'Copy ARM templates'
-    inputs:
-      SourceFolder: ArmTemplates
-      TargetFolder: '$(build.artifactstagingdirectory)'
+- task: CopyFiles@2
+  displayName: 'Copy ARM templates'
+  inputs:
+    SourceFolder: armTemplates
+    TargetFolder: '$(build.artifactstagingdirectory)'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+
 ...
