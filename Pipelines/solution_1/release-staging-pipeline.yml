@@ -40,6 +40,7 @@ jobs:
       appType: 'webAppLinux'
       WebAppName: 'inlinemarket-assesment'
       deployToSlotOrASE: true
+      ResourceGroupName: 'inlinemarket-excercise-rg'
       SlotName: 'test'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
       RuntimeStack: 'php|7.0'
