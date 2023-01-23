@@ -14,7 +14,7 @@ steps:
       resourceGroupName: 'inlinemarket-excercise-rg'
       location: 'West Europe'
       templateLocation: 'Linked artifact'
-      csmFile: '$(System.DefaultWorkingDirectory)/**/windows-webapp-template.json'
+      csmFile: '$(System.DefaultWorkingDirectory)/**/linux-webapp-template.json'
       overrideParameters: '-webAppName inlinemarket-assesment -hostingPlanName inlinemarket-assesment  -appInsightsLocation "West Europe" -sku "S1 Standard"'
       deploymentMode: 'Incremental'
 
