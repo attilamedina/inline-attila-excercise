@@ -17,33 +17,19 @@ jobs:
       resourceGroupName: 'inlinemarket-excercise-rg'
       location: 'West Europe'
       templateLocation: 'Linked artifact'
-      csmFile: '$(System.DefaultWorkingDirectory)/**/linux-webapp-template.json'
+      csmFile: '$(System.DefaultWorkingDirectory)/**/windows-webapp-template.json'
       overrideParameters: '-webAppName inlinemarket-assesment -hostingPlanName inlinemarket-assesment  -appInsightsLocation "West Europe" -sku "S1 Standard"'
       deploymentMode: 'Incremental'
 
-  - task: AzureResourceGroupDeployment@2
-    displayName: 'Azure Deployment:Create Test slot'
-    inputs:
-      azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-      action: 'Create Or Update Resource Group'
-      resourceGroupName: 'inlinemarket-excercise-rg'
-      location: 'West Europe'
-      templateLocation: 'Linked artifact'
-      csmFile: '$(System.DefaultWorkingDirectory)/**/slot-template.json'
-      deploymentMode: 'Incremental'
 
   - task: AzureRmWebAppDeployment@4
     displayName: 'Deploy Azure App Service'
     inputs:
       ConnectionType: 'AzureRM'
       azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-      appType: 'webAppLinux'
+      appType: 'webApp'
       WebAppName: 'inlinemarket-assesment'
-      deployToSlotOrASE: true
-      ResourceGroupName: 'inlinemarket-excercise-rg'
-      SlotName: 'test'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
-      RuntimeStack: 'php|7.0'
       ScriptType: 'Inline Script'
       InlineScript: |
         if [ -f  composer.json ] 
