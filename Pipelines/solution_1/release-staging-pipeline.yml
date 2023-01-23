@@ -37,7 +37,7 @@ steps:
       appType: 'webAppLinux'
       WebAppName: 'inlinemarket-assesment'
       deployToSlotOrASE: true
-      ResourceGroupName: 'inlinemarket-assesment-rg'
+      ResourceGroupName: 'inlinemarket-excercise-rg'
       SlotName: 'test'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
       RuntimeStack: 'php|7.0'
