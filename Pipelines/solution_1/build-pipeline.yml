@@ -17,7 +17,7 @@ steps:
     rootFolder: '$(System.DefaultWorkingDirectory)/Application'
     includeRootFolder: false
     archiveType: 'default'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar.gz'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
 - task: CopyFiles@2
