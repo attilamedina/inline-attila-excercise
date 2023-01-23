@@ -24,7 +24,7 @@ steps:
     azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
     appType: 'app'
     WebAppName: 'inlinemarket-assesment'
-    Package: '$(System.DefaultWorkingDirectory)\**\*.zip'
+    Package: '$(System.DefaultWorkingDirectory)/**/*.zip'
 #    Package: '$(Build.ArtifactStagingDirectory)\**\*.zip'
     ScriptType: 'Inline Script'
     InlineScript: |
