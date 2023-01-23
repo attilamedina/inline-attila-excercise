@@ -31,13 +31,13 @@
                 <div class="success-text">Welcome!</div>
                 <div class="description line-1">
 				<?php
-				echo "Attila Medina pipeline test assessment. Please validate the staging.";
+				echo "Attila Medina pipeline test assessment. Please validate the staging env first.";
 				?>
 				</div>
                 <div class="description line-2">
 				<?php
 				$appType = "PHP";
-				echo "This $appType app is up and running on Azure.";
+				echo "This $appType app is up and running on Azure in a conatiner.";
 				?>
 				</div>
                 <div class="next-steps-container">
