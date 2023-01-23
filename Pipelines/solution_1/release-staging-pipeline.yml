@@ -17,7 +17,17 @@ jobs:
       location: 'West Europe'
       csmFile: '$(System.DefaultWorkingDirectory)/**/container-webapp-template.json'
       overrideParameters: '-webAppName inlinemarket-excercise -hostingPlanName inlinemarket-excercise-plan -appInsightsLocation "West Europe" -sku "S1 Standard" -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard" -imageName inlinemarketexcercise:$(Build.BuildId)'
-
+#
+  - task: AzureResourceGroupDeployment@2
+    displayName: 'Azure Deployment:Create Test slot'
+    inputs:
+      azureSubscription: 'inlinemarket-excercise - Azure'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'inlinemarket-excercise-rg'
+      location: 'West Europe'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(System.DefaultWorkingDirectory)/**/slot-template.json'
+      deploymentMode: 'Incremental'
   - task: AzureRmWebAppDeployment@3
     displayName: 'Deploy Azure App Service'
     inputs:
