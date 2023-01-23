@@ -11,10 +11,9 @@ steps:
   displayName: 'Deploy Azure App Service'
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'inlinemarket-excercise - Azure'
+    azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
     appType: 'webAppLinux'
     WebAppName: 'inlinemarket-assesment'
-    ResourceGroupName: 'inlinemarket-excercise-rg'
     packageForLinux: '$(Build.ArtifactStagingDirectory)'
     RuntimeStack: 'php|7.0'
     ScriptType: 'Inline Script'
