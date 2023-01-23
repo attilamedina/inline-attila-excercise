@@ -36,5 +36,9 @@ steps:
       azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
       appType: 'webApp'
       WebAppName: 'inlinemarket-assesment'
+      deployToSlotOrASE: true
+      ResourceGroupName: 'inlinemarket-excercise-rg'
+      SlotName: 'test'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
       ScriptType: 'Inline Script'
+      InlineScript: ':: You can provide your deployment commands here. One command per line.'
