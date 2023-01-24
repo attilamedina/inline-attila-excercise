@@ -1,3 +1,6 @@
+#Release pipeline is not used, classic release is used in Azure DevOps
+
+
 trigger:
 - none
 
