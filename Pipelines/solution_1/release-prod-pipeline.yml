@@ -5,24 +5,28 @@ resources:
     project: inlinemarket-excercise 
     trigger: true 
 
+jobs:
+- job: waitForValidation
+  displayName: Wait for external validation  
+  pool: Azure pipelines    
 
-steps:
-- task: AzureRmWebAppDeployment@4
-  displayName: 'Deploy Azure App Service'
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-    appType: 'webAppLinux'
-    WebAppName: 'inlinemarket-assesment'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)'
-    RuntimeStack: 'php|7.0'
-    ScriptType: 'Inline Script'
-    InlineScript: |
-      if [ -f  composer.json ] 
-       then 
-      	 echo "Found composer.json" 
-      	 composer install 
-       else 
-      	 echo "Composer.json not found. Skipping composer install" 
-       fi
+  steps:
+  - task: AzureRmWebAppDeployment@4
+    displayName: 'Deploy Azure App Service'
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Free Trial(2)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+      appType: 'webAppLinux'
+      WebAppName: 'inlinemarket-assesment'
+      packageForLinux: '$(Build.ArtifactStagingDirectory)'
+      RuntimeStack: 'php|7.0'
+      ScriptType: 'Inline Script'
+      InlineScript: |
+        if [ -f  composer.json ] 
+        then 
+          echo "Found composer.json" 
+          composer install 
+        else 
+          echo "Composer.json not found. Skipping composer install" 
+        fi
 
