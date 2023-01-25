@@ -5,7 +5,12 @@ resources:
     project: inlinemarket-excercise 
     trigger: true 
 
-steps:
+jobs:
+- job: releaseStaging
+  displayName: Release staging 
+  pool: Azure pipelines    
+
+  steps:
   - task: AzureResourceGroupDeployment@2
     displayName: 'Azure Deployment:Create Azure App Service'
     inputs:
