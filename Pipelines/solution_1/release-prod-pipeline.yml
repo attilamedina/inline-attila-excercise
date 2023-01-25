@@ -6,7 +6,7 @@ resources:
     trigger: true 
 
 jobs:
-- job: waitForValidation
+- job: Release prod
   displayName: Wait for external validation  
   pool: Azure pipelines    
 
