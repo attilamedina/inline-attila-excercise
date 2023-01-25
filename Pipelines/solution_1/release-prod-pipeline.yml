@@ -1,7 +1,7 @@
 resources:
   pipelines:
   - pipeline: release-prod 
-    source: manual-validation 
+    source: release-staging 
     project: inlinemarket-excercise 
     trigger: true 
 
