@@ -6,8 +6,8 @@ resources:
     trigger: true 
 
 jobs:
-- job: Release prod
-  displayName: Wait for external validation  
+- job: releaseProd
+  displayName: Release prod
   pool: Azure pipelines    
 
   steps:
