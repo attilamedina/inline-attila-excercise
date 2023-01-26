@@ -23,7 +23,15 @@ jobs:
       location: West Europe
       csmFile: $(System.DefaultWorkingDirectory)/**/containerRegistry-template.json
       overrideParameters: -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard"
-
+  - task: Docker@1
+    displayName: Build an image
+    inputs:
+      containerregistrytype: 'Azure Container Registry'
+      azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+      azureContainerRegistry: 'inlinemarketexcerciseacr.azurecr.io'
+      command: 'Build an image'
+      dockerFile: '**/Dockerfile'
+      imageName: 'inlinemarketexcercise:$(Build.BuildId)'
   - task: Docker@1
     displayName: Push an image
     inputs:
