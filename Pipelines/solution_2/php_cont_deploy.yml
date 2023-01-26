@@ -24,7 +24,7 @@ jobs:
       location: 'West Europe'
       templateLocation: 'Linked artifact'
       csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
-      overrideParameters: '-registryName "inlinemarketassessmentcr" -registryLocation "West Europe" -registrySku "Standard"'
+      overrideParameters: '-registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard"'
       deploymentMode: 'Incremental'
 
   - task: Docker@1
