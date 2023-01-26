@@ -26,6 +26,7 @@ jobs:
       csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
       overrideParameters: '-registryName "inlinemarketassessmentcr" -registryLocation "West Europe" -registrySku "Standard"'
       deploymentMode: 'Incremental'
+
   - task: Docker@1
     displayName: Build an image
     inputs:
@@ -42,7 +43,7 @@ jobs:
         else 
           echo "Composer.json not found. Skipping composer install" 
         fi
-      imageName: 'inlinemarketassessment:$(Build.BuildId)'
+      imageName: 'inlinemarketexcerciseacr:$(Build.BuildId)'
   - task: Docker@1
     displayName: Push an image
     inputs:
