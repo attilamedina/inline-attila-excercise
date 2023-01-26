@@ -45,7 +45,7 @@ jobs:
       ResourceGroupName: 'inlinemarket-excercise-rg'
       SlotName: 'test'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
-      RuntimeStack: 'php|7.0'
+      RuntimeStack: 'PHP|8.1'
       ScriptType: 'Inline Script'
       InlineScript: |
         if [ -f  composer.json ] 
