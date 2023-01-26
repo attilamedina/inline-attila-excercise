@@ -1,15 +1,3 @@
-trigger:
-  branches:
-    include:
-    - master
-  paths:
-    include:
-    - Application
-  batch: True
-
-pool:
-  name: Azure Pipelines
-
 steps:
 - task: AzureResourceGroupDeployment@2
   displayName: 'Azure Deployment:Create Azure Container Registry'
