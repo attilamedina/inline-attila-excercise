@@ -26,13 +26,16 @@ jobs:
   - task: Docker@1
     displayName: Build an image
     inputs:
-      azureSubscriptionEndpoint: dda97263-17a6-4d8c-aade-95936f0de8f1
-      azureContainerRegistry: inlinemarketexcerciseacr.azurecr.io
-      imageName: inlinemarketexcercise:$(Build.BuildId)
+      containerregistrytype: 'Azure Container Registry'
+      azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+      azureContainerRegistry: 'inlinemarketexcerciseacr.azurecr.io'
+      command: 'Build an image'
+      dockerFile: '**/Dockerfile'
+      imageName: 'inlinemarketexcercise:$(Build.BuildId)'
   - task: Docker@1
     displayName: Push an image
     inputs:
-      azureSubscriptionEndpoint: dda97263-17a6-4d8c-aade-95936f0de8f1
+      azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
       azureContainerRegistry: inlinemarketexcerciseacr.azurecr.io
       command: Push an image
       imageName: inlinemarketexcercise:$(Build.BuildId)
