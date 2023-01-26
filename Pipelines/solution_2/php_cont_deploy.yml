@@ -34,7 +34,7 @@ jobs:
       azureContainerRegistry: 'inlinemarketexcerciseacr.azurecr.io'
       command: 'Build an image'
       dockerFile: '**/Dockerfile'
-      imageName: 'inlinemarketexcercise:$(Build.BuildId)'
+      imageName: 'inlinemarketassessment:$(Build.BuildId)'
   - task: Docker@1
     displayName: Push an image
     inputs:
