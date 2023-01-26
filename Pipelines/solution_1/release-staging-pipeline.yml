@@ -8,7 +8,7 @@ resources:
 jobs:
 - job: releaseStaging
   displayName: Release staging 
-  pool: Azure pipelines    
+ # pool: Azure pipelines    
 
   steps:
   - task: AzureResourceGroupDeployment@2
