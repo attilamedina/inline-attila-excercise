@@ -11,10 +11,8 @@ jobs:
   pool: Azure pipelines    
   timeoutInMinutes: 4320 # job times out in 3 days
   steps:   
-  - task: ManualValidation@0
-    timeoutInMinutes: 1440 # task times out in 1 day
+
+  - task: ManualIntervention@8
     inputs:
-        notifyUsers: |
-              attila.medina@gmail.com
-        instructions: 'Please validate the build configuration and resume'
-        onTimeout: 'resume'
+      instructions: 'Please approve'
+      emailRecipients: 'attila.medina@gmail.com'
