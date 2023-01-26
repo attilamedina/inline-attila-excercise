@@ -8,7 +8,7 @@ trigger:
   batch: True
 name: $(date:yyyyMMdd)$(rev:.r)
 
-#pool:
+pool:
   name: Azure Pipelines
 steps:
 - task: ArchiveFiles@1
