@@ -6,14 +6,14 @@ steps:
     resourceGroupName: 'inlinemarket-excercise-rg'
     location: 'West Europe'
     csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
-    overrideParameters: '-registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard"'
+    overrideParameters: '-registryName "inlinemarketexcerciseacr2" -registryLocation "South Central US" -registrySku "Standard"'
 
 - task: Docker@1
   displayName: 'Build an image'
   inputs:
     azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-    azureContainerRegistry: inlinemarketexcerciseacr.azurecr.io
-    imageName: 'inlinemarketexcercise:$(Build.BuildId)'
+    azureContainerRegistry: inlinemarketexcerciseacr2.azurecr.io
+    imageName: 'inlinemarketexcercise2:$(Build.BuildId)'
 
 - task: Docker@1
   displayName: 'Push an image'
