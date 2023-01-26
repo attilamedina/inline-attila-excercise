@@ -47,12 +47,5 @@ jobs:
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
       RuntimeStack: 'PHP|8.1'
       ScriptType: 'Inline Script'
-      InlineScript: |
-        if [ -f  composer.json ] 
-        then
-          echo "Found composer.json" 
-          composer install 
-        else 
-          echo "Composer.json not found. Skipping composer install" 
-        fi
+      InlineScript: ''
 
