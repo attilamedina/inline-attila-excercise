@@ -15,7 +15,7 @@ jobs:
     displayName: 'Deploy Azure App Service'
     inputs:
       ConnectionType: 'AzureRM'
-      azureSubscription: 'Free Trial(3)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+      azureSubscription: 'inlinemarket-excercise - Azure'
       appType: 'webAppLinux'
       WebAppName: 'inlinemarket-assesment'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
