@@ -1,12 +1,12 @@
-#trigger:
-#  branches:
-#    include:
-#    - master
-#  paths:
-#    include:
-#    - Application
-#  batch: True
-# name: $(date:yyyyMMdd)$(rev:.r)
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - Application
+  batch: True
+name: $(date:yyyyMMdd)$(rev:.r)
 
 pool:
   name: Azure Pipelines
