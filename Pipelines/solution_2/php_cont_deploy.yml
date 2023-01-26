@@ -18,11 +18,14 @@ jobs:
   - task: AzureResourceGroupDeployment@2
     displayName: Azure Deployment:Create Azure Container Registry
     inputs:
-      ConnectedServiceName: dda97263-17a6-4d8c-aade-95936f0de8f1
-      resourceGroupName: inlinemarket-excercise-rg
-      location: West Europe
-      csmFile: $(System.DefaultWorkingDirectory)/**/containerRegistry-template.json
-      overrideParameters: -registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard"
+      azureSubscription: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'inlinemarket-excercise-rg'
+      location: 'West Europe'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
+      overrideParameters: '-registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard"'
+      deploymentMode: 'Incremental'
   - task: Docker@1
     displayName: Build an image
     inputs:
