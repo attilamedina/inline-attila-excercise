@@ -12,6 +12,7 @@ jobs:
   displayName: Agent job 1
   timeoutInMinutes: 0
   pool:
+    name: Azure pipelines
     vmImage: ubuntu-18.04
   steps:
   - checkout: self
@@ -28,22 +29,15 @@ jobs:
       deploymentMode: 'Incremental'
 
   - task: Docker@1
-    displayName: Build an image
+    displayName: 'Build an image'
     inputs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
       azureContainerRegistry: 'inlinemarketexcerciseacr.azurecr.io'
       command: 'Build an image'
       dockerFile: '**/Dockerfile'
-      arguments: |
-        if [ -f  composer.json ] 
-        then
-          echo "Found composer.json" 
-          composer install 
-        else 
-          echo "Composer.json not found. Skipping composer install" 
-        fi
       imageName: 'inlinemarketexcerciseacr:$(Build.BuildId)'
+
   - task: Docker@1
     displayName: Push an image
     inputs:
