@@ -7,8 +7,8 @@ resources:
 
 jobs:
 - job: waitForValidation
-#  displayName: Wait for external validation  
-#  pool: Azure pipelines    
+  displayName: Wait for external validation  
+  pool: Azure pipelines    
   timeoutInMinutes: 4320 # job times out in 3 days
   steps:   
   - task: ManualValidation@0
