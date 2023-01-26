@@ -24,7 +24,7 @@ jobs:
       location: 'West Europe'
       templateLocation: 'Linked artifact'
       csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
-      overrideParameters: '-registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard"'
+      overrideParameters: '-registryName "inlinemarketassessmentcr" -registryLocation "West Europe" -registrySku "Standard"'
       deploymentMode: 'Incremental'
   - task: Docker@1
     displayName: Build an image
@@ -34,6 +34,14 @@ jobs:
       azureContainerRegistry: 'inlinemarketexcerciseacr.azurecr.io'
       command: 'Build an image'
       dockerFile: '**/Dockerfile'
+      arguments: |
+        if [ -f  composer.json ] 
+        then
+          echo "Found composer.json" 
+          composer install 
+        else 
+          echo "Composer.json not found. Skipping composer install" 
+        fi
       imageName: 'inlinemarketassessment:$(Build.BuildId)'
   - task: Docker@1
     displayName: Push an image
