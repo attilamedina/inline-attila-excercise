@@ -1,40 +1,58 @@
-steps:
-- task: AzureResourceGroupDeployment@2
-  displayName: 'Azure Deployment:Create Azure Container Registry'
-  inputs:
-    azureSubscription: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-    resourceGroupName: 'inlinemarket-excercise-rg'
-    location: 'West Europe'
-    csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
-    overrideParameters: '-registryName "inlinemarketexcerciseacr2" -registryLocation "South Central US" -registrySku "Standard"'
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - Application
+  batch: True
+name: $(date:yyyyMMdd)$(rev:.r)
+jobs:
+- job: Phase_1
+  displayName: Agent job 1
+  timeoutInMinutes: 0
+  pool:
+    name: Azure pipelines
+    vmImage: ubuntu-18.04
+  steps:
+  - checkout: self
+  - task: AzureResourceGroupDeployment@2
+    displayName: Azure Deployment:Create Azure Container Registry
+    inputs:
+      azureSubscription: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: 'inlinemarket-excercise-rg'
+      location: 'West Europe'
+      templateLocation: 'Linked artifact'
+      csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
+      overrideParameters: '-registryName "inlinemarketexcerciseacr" -registryLocation "South Central US" -registrySku "Standard"'
+      deploymentMode: 'Incremental'
 
-- task: Docker@1
-  displayName: 'Build an image'
-  inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-    azureContainerRegistry: 'inlinemarketexcerciseacr2.azurecr.io'
-    command: 'Build an image'
-    dockerFile: '**/Dockerfile'
-    imageName: 'inlinemarketexcercise2:$(Build.BuildId)'
-    qualifyImageName: false
+  - task: Docker@1
+    displayName: 'Build an image'
+    inputs:
+      containerregistrytype: 'Azure Container Registry'
+      azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+      azureContainerRegistry: 'inlinemarketexcerciseacr.azurecr.io'
+      command: 'Build an image'
+      dockerFile: '**/Dockerfile'
+      imageName: 'inlinemarketexcercise:$(Build.BuildId)'
 
-- task: Docker@1
-  displayName: 'Push an image'
-  inputs:
-    azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
-    azureContainerRegistry: inlinemarketexcerciseacr.azurecr.io
-    command: 'Push an image'
-    imageName: 'inlinemarketexcercise:$(Build.BuildId)'
-
-- task: CopyFiles@2
-  displayName: 'Copy ARM templates'
-  inputs:
-    SourceFolder: ArmTemplates
-    TargetFolder: '$(build.artifactstagingdirectory)'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-
+  - task: Docker@1
+    displayName: Push an image
+    inputs:
+      azureSubscriptionEndpoint: 'Free Trial(4)(415f196b-dbde-48a5-8a04-3897ea12069e)'
+      azureContainerRegistry: inlinemarketexcerciseacr.azurecr.io
+      command: Push an image
+      imageName: inlinemarketexcercise:$(Build.BuildId)
+  - task: CopyFiles@2
+    displayName: Copy ARM templates
+    inputs:
+      SourceFolder: ArmTemplates
+      TargetFolder: $(build.artifactstagingdirectory)
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Artifact
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+...
