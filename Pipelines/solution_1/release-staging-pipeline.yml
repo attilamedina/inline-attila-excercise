@@ -16,11 +16,11 @@ jobs:
     inputs:
       azureSubscription: 'Free Trial(6)(415f196b-dbde-48a5-8a04-3897ea12069e)'
       action: 'Create Or Update Resource Group'
-      resourceGroupName: 'inlinemarket-rg'
+      resourceGroupName: 'inlinemarket-excercise-rg'
       location: 'West Europe'
       templateLocation: 'Linked artifact'
       csmFile: '$(System.DefaultWorkingDirectory)/**/linux-webapp-template.json'
-      overrideParameters: '-webAppName inlinemarket-assessment -hostingPlanName inlinemarket-assessment  -appInsightsLocation "West Europe" -sku "S1 Standard"'
+      overrideParameters: '-webAppName inlinemarket-assesment -hostingPlanName inlinemarket-assesment  -appInsightsLocation "West Europe" -sku "S1 Standard"'
       deploymentMode: 'Incremental'
 
   - task: AzureResourceGroupDeployment@2
@@ -28,11 +28,10 @@ jobs:
     inputs:
       azureSubscription: 'Free Trial(6)(415f196b-dbde-48a5-8a04-3897ea12069e)'
       action: 'Create Or Update Resource Group'
-      resourceGroupName: 'inlinemarket-rg'
+      resourceGroupName: 'inlinemarket-excercise-rg'
       location: 'West Europe'
       templateLocation: 'Linked artifact'
       csmFile: '$(System.DefaultWorkingDirectory)/**/slot-template.json'
-      overrideParameters: '-webAppName inlinemarket-assessment hostingPlanName inlinemarket-assessment'
       deploymentMode: 'Incremental'
 
   - task: AzureRmWebAppDeployment@4
@@ -41,9 +40,9 @@ jobs:
       ConnectionType: 'AzureRM'
       azureSubscription: 'Free Trial(6)(415f196b-dbde-48a5-8a04-3897ea12069e)'
       appType: 'webAppLinux'
-      WebAppName: 'inlinemarket-assessment'
+      WebAppName: 'inlinemarket-assesment'
       deployToSlotOrASE: true
-      ResourceGroupName: 'inlinemarket-rg'
+      ResourceGroupName: 'inlinemarket-excercise-rg'
       SlotName: 'test'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
       RuntimeStack: 'PHP|8.1'
