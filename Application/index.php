@@ -19,7 +19,7 @@
             </a>            
         </div>
             <div class="content-body">
-                <div class="success-text">Success!!!</div>
+                <div class="success-text">Success!</div>
                 <div class="description line-1">
 				<?php
 				echo "Azure DevOps Project has been successfully setup";
