@@ -17,7 +17,7 @@ jobs:
       ConnectionType: 'AzureRM'
       azureSubscription: 'Free Trial(6)(415f196b-dbde-48a5-8a04-3897ea12069e)'
       appType: 'webAppLinux'
-      WebAppName: 'inlinemarket-assessment'
+      WebAppName: 'inlinemarket-assesment'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
       RuntimeStack: 'PHP|8.1'
       ScriptType: 'Inline Script'
