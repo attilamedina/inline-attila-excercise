@@ -32,6 +32,7 @@ jobs:
       location: 'West Europe'
       templateLocation: 'Linked artifact'
       csmFile: '$(System.DefaultWorkingDirectory)/**/slot-template.json'
+      overrideParameters: '-webAppName inlinemarket-assessment hostingPlanName inlinemarket-assessment'
       deploymentMode: 'Incremental'
 
   - task: AzureRmWebAppDeployment@4
