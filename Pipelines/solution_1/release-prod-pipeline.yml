@@ -18,6 +18,9 @@ jobs:
       azureSubscription: 'Free Trial(7)(415f196b-dbde-48a5-8a04-3897ea12069e)'
       appType: 'webAppLinux'
       WebAppName: 'inlinemarket-assesment'
+      deployToSlotOrASE: true
+      ResourceGroupName: 'inlinemarket-assesment-rg'
+      SlotName: 'production'
       packageForLinux: '$(Build.ArtifactStagingDirectory)'
       RuntimeStack: 'PHP|8.1'
       ScriptType: 'Inline Script'
